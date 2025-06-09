@@ -2,7 +2,7 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBKC9YZJPCvsDY0pG7xrGrX-knI8prPGOE",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "notesync-940ad.firebaseapp.com",
   projectId: "notesync-940ad",
   storageBucket: "notesync-940ad.firebasestorage.app",
