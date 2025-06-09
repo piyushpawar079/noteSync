@@ -16,7 +16,7 @@ export default async function createNewDocument() {
         title: "New document"
     });
 
-    await adminDB.collection('users').doc(sessionClaims?.email!).collection('room').doc(docRef.id).set({
+    await adminDB.collection('users').doc(sessionClaims?.email!).collection('rooms').doc(docRef.id).set({
         userId: sessionClaims?.email,
         role: 'owner',
         createdAt: new Date(),

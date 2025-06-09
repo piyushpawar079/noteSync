@@ -1,9 +1,19 @@
-import React from 'react'
+'use client'
 
-const page = () => {
+import Document from "@/components/Document"
+import { useParams } from "next/navigation"
+
+
+const DocumentPage = () => {
+
+  const params = useParams()
+  const docId = params.docId // This will contain your docId from the URL
+
   return (
-    <div>page</div>
+    <div className="flex flex-col flex-1 min-h-screen">
+      <Document id={docId! as string}/>
+    </div>
   )
 }
 
-export default page
+export default DocumentPage
