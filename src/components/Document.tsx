@@ -35,9 +35,9 @@ const Document = ({ id }: { id: string }) => {
 
   return (
     <div>
-        <div>
-            <form onSubmit={changeTitle}>
-                <Input value={title} onChange={(e) => setTitle(e.target.value)}/>
+        <div className='flex max-w-6xl mx-auto justify-between pb-5'>
+            <form className='flex flex-1 space-x-2' onSubmit={changeTitle}>
+                <Input className='border-2 border-black' value={title} onChange={(e) => setTitle(e.target.value)}/>
 
                 <Button disabled={isUpdating} type='submit'>
                     {

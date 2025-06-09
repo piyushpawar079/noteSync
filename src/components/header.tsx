@@ -2,6 +2,7 @@
 
 import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from '@clerk/nextjs'
 import Link from 'next/link';
+import Breadcrumbs from './Breadcrumbs';
 
 const Header = () => {
 
@@ -16,7 +17,7 @@ const Header = () => {
           </Link>
         }
 
-        {/* BreadCrums */}
+        <Breadcrumbs />
 
         <SignedOut>
           <SignInButton />
