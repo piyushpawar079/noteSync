@@ -10,14 +10,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { usePathname } from 'next/navigation'
 import { toast } from 'sonner'
-import { Input } from './ui/input'
-import inviteUserToDocument from '@/actions/inviteUser'
 import { useUser } from '@clerk/nextjs'
 import { useRoom } from '@liveblocks/react'
 import { useCollection } from 'react-firebase-hooks/firestore'
-import { collection, query, where } from 'firebase/firestore'
+import { collectionGroup, query, where } from 'firebase/firestore'
 import { db } from '@/firebase'
 import { useOwner } from '@/lib/useOwner'
 import removeUserFromDoc from '@/actions/removeUser'
@@ -31,7 +28,7 @@ const ManageUsers = () => {
     const isOwner = useOwner();
 
     const [usersInRoom] = useCollection(
-        user && query(collection(db, 'rooms'), where('roomId', '==', room.id))
+        user && query(collectionGroup(db, 'rooms'), where('roomId', '==', room.id))
     )
 
     const handleDelete =  (userId: string) => {

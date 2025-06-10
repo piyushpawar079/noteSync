@@ -64,12 +64,12 @@ const Document = ({ id }: { id: string }) => {
             </form>
         </div>
 
-        <div>
+        <div className='flex justify-between px-20 pb-5'>
             <ManageUsers />
             <Avatars />
         </div>
 
-        <hr className='pb-10' />
+        <hr className='py-8' />
 
         <div>
             <Editor />

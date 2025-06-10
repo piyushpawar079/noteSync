@@ -1,3 +1,5 @@
+'use server'
+
 import { adminDB } from "@/firebase-admin";
 import { auth } from "@clerk/nextjs/server";
 
