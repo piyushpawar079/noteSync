@@ -5,12 +5,16 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { Button } from './ui/button';
 import Editor from './Editor';
+import { useOwner } from '@/lib/useOwner';
+import DeleteDocument from './DeleteDocument';
+import InviteUsers from './InviteUsers';
 
 const Document = ({ id }: { id: string }) => {
 
     const [data, loading, error] = useDocumentData(doc(db, 'documents', id));
     const [title, setTitle] = useState('');
     const [isUpdating, startTransition] = useTransition();
+    const isOwner = useOwner();
 
     useEffect(() => {
 
@@ -45,6 +49,15 @@ const Document = ({ id }: { id: string }) => {
                         isUpdating ? 'Updating...' : 'Update'
                     }
                 </Button>
+
+                {
+                    isOwner && (
+                        <>
+                            <InviteUsers />
+                            <DeleteDocument />
+                        </>
+                    )
+                }
 
             </form>
         </div>

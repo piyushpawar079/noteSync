@@ -13,7 +13,6 @@ const DocLayout = ({ children } : {
 
     const { docId } = useParams();
 
-    console.log(docId)
 
   return (
     <CustomRoomProvider roomId={docId! as string}>{children}</CustomRoomProvider>
