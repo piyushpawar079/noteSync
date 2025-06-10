@@ -4,6 +4,7 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { Button } from './ui/button';
+import Editor from './Editor';
 
 const Document = ({ id }: { id: string }) => {
 
@@ -47,6 +48,17 @@ const Document = ({ id }: { id: string }) => {
 
             </form>
         </div>
+
+        <div>
+
+        </div>
+
+        <hr className='pb-10' />
+
+        <div>
+            <Editor />
+        </div>
+
     </div>
   )
 }

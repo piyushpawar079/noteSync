@@ -12,6 +12,7 @@
     "@blocknote/core": "^0.31.1",
     "@blocknote/mantine": "^0.32.0-hackdays.0",
     "@blocknote/react": "^0.31.1",
+    "@blocknote/shadcn": "^0.31.2",
     "@clerk/nextjs": "^6.21.0",
     "@liveblocks/client": "^2.24.3",
     "@liveblocks/node": "^2.24.3",
