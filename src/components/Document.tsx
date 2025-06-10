@@ -8,6 +8,8 @@ import Editor from './Editor';
 import { useOwner } from '@/lib/useOwner';
 import DeleteDocument from './DeleteDocument';
 import InviteUsers from './InviteUsers';
+import ManageUsers from './ManageUsers';
+import Avatars from './Avatars';
 
 const Document = ({ id }: { id: string }) => {
 
@@ -63,7 +65,8 @@ const Document = ({ id }: { id: string }) => {
         </div>
 
         <div>
-
+            <ManageUsers />
+            <Avatars />
         </div>
 
         <hr className='pb-10' />
