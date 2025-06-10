@@ -14,6 +14,7 @@
     "@blocknote/react": "^0.31.1",
     "@clerk/nextjs": "^6.21.0",
     "@liveblocks/client": "^2.24.3",
+    "@liveblocks/node": "^2.24.3",
     "@liveblocks/react": "^2.24.3",
     "@liveblocks/react-blocknote": "^2.24.3",
     "@liveblocks/react-ui": "^2.24.3",
