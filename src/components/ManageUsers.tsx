@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FormEvent, useState, useTransition } from 'react'
+import React, { useState, useTransition } from 'react'
 import { Button } from './ui/button'
 import {
   Dialog,
@@ -38,9 +38,9 @@ const ManageUsers = () => {
             const { success } = await removeUserFromDoc(room.id, userId);
 
             if (success) {
-                toast.success('User added to room successfully')
+                toast.success('User removed from the room successfully')
             } else {
-                toast.error('Failed to add user to the room, try again')
+                toast.error('Failed to remove user from the room, try again')
             }
 
         })

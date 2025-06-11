@@ -10,6 +10,8 @@ import { useCreateBlockNote } from '@blocknote/react';
 import stringToColor from '@/lib/stringToColor';
 import "@blocknote/core/fonts/inter.css"
 import "@blocknote/shadcn/style.css"
+import TranslateDocument from './TranslateDocument';
+import ChatToDocument from './ChatToDocument';
 
 type EditorProps = {
     doc: Y.Doc;
@@ -73,7 +75,8 @@ const Editor = () => {
     <div className='max-w-6xl mx-auto'>
 
         <div className='flex mb-18 items-center justify-end gap-2'>
-
+            <TranslateDocument doc={doc} />
+            <ChatToDocument doc={doc} />
         </div>
 
         <BlockNote doc={doc} provider={provider}/>
