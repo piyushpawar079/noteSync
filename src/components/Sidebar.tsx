@@ -2,12 +2,11 @@
 
 import React, { useEffect, useState } from 'react'
 import NewDocumentButton from './NewDocumentButton'
-import { collection, collectionGroup, DocumentData, query, where } from 'firebase/firestore'
+import { collectionGroup, DocumentData, query, where } from 'firebase/firestore'
 import { useCollection } from "react-firebase-hooks/firestore"
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -36,7 +35,7 @@ const Sidebar = () => {
         editor: []
     });
 
-    const [data, loading, error] = useCollection(
+    const [data] = useCollection(
         (
             user &&
             query(

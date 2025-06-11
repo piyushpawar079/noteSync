@@ -11,7 +11,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { FormEvent, useState, useTransition } from 'react';
-import { Input } from './ui/input';
 import {
   Select,
   SelectContent,
@@ -55,7 +54,6 @@ const TranslateDocument = ({ doc } : { doc: Y.Doc }) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [langauge, setLangauge] = useState("");
-    const [question, setQuestion] = useState('');
     const [summary, setSummary] = useState('');
     const [isPending, startTransition] = useTransition();
 
@@ -109,11 +107,6 @@ const TranslateDocument = ({ doc } : { doc: Y.Doc }) => {
           </DialogDescription>
 
             <hr className='mt-5' />
-
-            {
-                question && <p className='mt-5 text-gray-500'>{question}</p>
-            }
-
           </DialogHeader>
 
             {

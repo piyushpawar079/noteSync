@@ -13,7 +13,7 @@ import Avatars from './Avatars';
 
 const Document = ({ id }: { id: string }) => {
 
-    const [data, loading, error] = useDocumentData(doc(db, 'documents', id));
+    const [data] = useDocumentData(doc(db, 'documents', id));
     const [title, setTitle] = useState('');
     const [isUpdating, startTransition] = useTransition();
     const isOwner = useOwner();

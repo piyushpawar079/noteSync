@@ -3,8 +3,6 @@ import React from 'react'
 
 import {
   LiveblocksProvider,
-  RoomProvider,
-  ClientSideSuspense,
 } from "@liveblocks/react/suspense";
 
 const LiveBlocksProvider = ({ children } : {
