@@ -64,7 +64,7 @@ const TranslateDocument = ({ doc } : { doc: Y.Doc }) => {
             const documentData = doc.get('document-store').toJSON()
 
             const res = await fetch(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/translateDocument`,
+                `http://127.0.0.1:8787/translateDocument`,
                 {
                     method: 'POST',
                     headers: {
@@ -80,7 +80,7 @@ const TranslateDocument = ({ doc } : { doc: Y.Doc }) => {
 
             if (res.ok) {
 
-                const { translated_text } = await res.json();
+                const translated_text  = await res.json();
 
                 setSummary(translated_text);
                 console.log(translated_text);

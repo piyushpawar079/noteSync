@@ -31,10 +31,8 @@ const ManageUsers = () => {
         user && query(collectionGroup(db, 'rooms'), where('roomId', '==', room.id))
     )
 
-    const handleDelete =  (userId: string) => {
-
-        startTransition( async () => {
-
+    const handleDelete = (userId: string) => {
+        startTransition(async () => {
             const { success } = await removeUserFromDoc(room.id, userId);
 
             if (success) {
@@ -42,64 +40,74 @@ const ManageUsers = () => {
             } else {
                 toast.error('Failed to remove user from the room, try again')
             }
-
         })
-
     }
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <Button asChild variant='outline'>
-            <DialogTrigger>
-                Users ({usersInRoom?.docs.length})
-            </DialogTrigger>
-        </Button>
-        <DialogContent>
-            <DialogHeader>
-            <DialogTitle>Users with access</DialogTitle>
-            <DialogDescription>
-                Below is the list of users who has access to this document
-            </DialogDescription>
-            </DialogHeader>
+            <Button asChild variant='outline'>
+                <DialogTrigger>
+                    Users ({usersInRoom?.docs.length})
+                </DialogTrigger>
+            </Button>
+            <DialogContent className="max-w-md">
+                <DialogHeader>
+                    <DialogTitle>Users with access</DialogTitle>
+                    <DialogDescription>
+                        Below is the list of users who has access to this document
+                    </DialogDescription>
+                </DialogHeader>
 
-        <hr className='my-2' />
+                <hr className='my-2' />
 
-        <div className='flex flex-col space-y-2 '>
-            {
-                usersInRoom?.docs.map((doc) => (
-                    <div
-                        key={doc.data().userId}
-                        className='flex items-center justify-between '
-                    >
-                        <p>
-                            {
-                                doc.data().userId === user?.emailAddresses[0].toString()
-                                    ? `You (${doc.data().userId})` : doc.data().userId 
-                            }
-                        </p>
+                <div className='flex flex-col space-y-3'>
+                    {usersInRoom?.docs.map((doc) => (
+                        <div
+                            key={doc.data().userId}
+                            className='flex items-center justify-between gap-3'
+                        >
+                            <div className="flex-1 min-w-0">
+                                <p className="text-sm truncate">
+                                    {doc.data().userId === user?.emailAddresses[0].toString()
+                                        ? `You (${doc.data().userId})` 
+                                        : doc.data().userId 
+                                    }
+                                </p>
+                            </div>
 
-                        <div className='gap-2 flex items-center'>
-                            <Button disabled variant='outline'>{doc.data().userId}</Button>
+                            <div className='flex items-center gap-2 flex-shrink-0'>
+                                <Button 
+                                    disabled 
+                                    variant='outline' 
+                                    size="sm"
+                                    className="text-sm "
+                                >
+                                    {doc.data().role || 'Editor'}
+                                </Button>
 
-                            {
-                                isOwner &&
-                                    doc.data().userId !== user?.emailAddresses[0].toString()
-                                        && (
-                                            <Button size='sm' variant='destructive' onClick={() => handleDelete(doc.data().userId)} disabled={isPending}>
-                                                {
-                                                    isPending ? "Removing..." : "X"
-                                                }
-                                            </Button>
-                                        )
-                            }
-
+                                {isOwner && doc.data().userId !== user?.emailAddresses[0].toString() && (
+                                    <Button 
+                                        size='sm' 
+                                        variant='destructive' 
+                                        onClick={() => handleDelete(doc.data().userId)} 
+                                        disabled={isPending}
+                                        className="min-w-[80px] h-8"
+                                    >
+                                        {isPending ? (
+                                            <div className="flex items-center gap-1">
+                                                <div className="w-3 h-3 border border-white border-t-transparent rounded-full animate-spin"></div>
+                                                <span className="text-xs">Removing</span>
+                                            </div>
+                                        ) : (
+                                            "Remove"
+                                        )}
+                                    </Button>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                ))
-            }
-        </div>
-
-        </DialogContent>
+                    ))}
+                </div>
+            </DialogContent>
         </Dialog>
     )
 }

@@ -3,10 +3,22 @@
 import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from '@clerk/nextjs'
 import Link from 'next/link';
 import Breadcrumbs from './Breadcrumbs';
+import { useEffect } from 'react';
+import createNewUser from '@/actions/createNewUser';
 
 const Header = () => {
 
     const { user } = useUser();
+
+
+    useEffect(() => {
+
+      if (user) {
+          createNewUser()
+      }
+
+    }, [user])
+
     
   return (
     <div className='flex items-center justify-between p-5'>

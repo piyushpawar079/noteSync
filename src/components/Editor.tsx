@@ -75,7 +75,7 @@ const Editor = () => {
     <div className='max-w-6xl mx-auto'>
 
         <div className='flex mb-18 items-center justify-end gap-2'>
-            <TranslateDocument doc={doc} />
+            {/* <TranslateDocument doc={doc} /> */}
             <ChatToDocument doc={doc} />
         </div>
 

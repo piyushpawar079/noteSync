@@ -1,8 +1,12 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
+if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
+  throw new Error('process.env.FIREBASE_API_KEY is not set')
+}
+
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "notesync-940ad.firebaseapp.com",
   projectId: "notesync-940ad",
   storageBucket: "notesync-940ad.firebasestorage.app",
